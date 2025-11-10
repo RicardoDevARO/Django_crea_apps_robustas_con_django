@@ -1,0 +1,45 @@
+<!-- Se crea una carpeta llamada "Template/landing" o "Template/nombre_de_tu_app" para que Djando reconozca que es un template-->
+<!--  Fragmento de configuración para Visual Studio Code que permite utilizar Emmet con plantillas Django
+
+    "emmet.includeLanguages": {        
+    "django-html": "html"    
+} 
+
+-->
+<!-- Archivo Template, las vistas muestran este archivo de codigo -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+
+
+{% if name == "Ricardo" %}
+    <h1>Hola Profe</h1>
+    <h2>Nombre: {{ name | title }}</h2>
+{% elif name == "Fernando" %}
+    <h1>Hola Fernando</h1>
+{% else %}
+    <h1>Hola invitado</h1>
+{% endif %}
+
+
+    <p>Edad: {{ age }}</p>
+
+    <p>Fecha: {{ today | date:"d/m/y"}}</p>
+
+    <p> Tecnologías que estoy aprendiendo: </p>
+    <ul>
+        {% for tool in stack %}
+        <li>{{tool}}</li>
+        {% empty %}
+        <li>No hay tecnologias Disponibles</li>
+        {% endfor %}
+    </ul>
+    
+    
+</body>
+</html>
