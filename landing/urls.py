@@ -10,4 +10,5 @@ from . import views
 #permite a Django decidir qué vista ejecutar según la URL de la petición del usuario
 urlpatterns = [
     path('home', views.home, name="home"),
+    path('stack/<str:tool>', views.stack_detail, name="stack_detail"),
 ]

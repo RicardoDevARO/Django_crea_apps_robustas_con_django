@@ -6,7 +6,7 @@
 from django.shortcuts import render
 
 # imports comentados que no se usan
-# from django.http import HttpResponse
+from django.http import HttpResponse
 # Cierre imports comentados que no se usan
 
 # importa la clase date del módulo datetime para trabajar con fechas
@@ -16,7 +16,7 @@ from datetime import date
 # función que maneja las solicitudes a la página de inicio
 def home(request):
     today = date.today()
-    stack = ['Python', 'Django', 'Golang', 'PHP', 'JS']
+    stack = [{'id': 'python', 'name':'Python'}, {'id': 'django', 'name':'Django'}, {'id': 'js', 'name':'JavaScript'}, {'id': 'react', 'name':'React'}]
     return render(request, "landing/landing.html", {
         "name": "Fernando",
         "today": today,
@@ -24,3 +24,6 @@ def home(request):
         "stack": stack
     })
 
+
+def stack_detail(request, tool):
+    return HttpResponse(f"Tecnología: {tool}")

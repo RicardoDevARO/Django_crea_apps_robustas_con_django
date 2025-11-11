@@ -7,39 +7,36 @@
 
 -->
 <!-- Archivo Template, las vistas muestran este archivo de codigo -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-</head>
-<body>
+{% extends "base.html" %}
 
 
-{% if name == "Ricardo" %}
-    <h1>Hola Profe</h1>
-    <h2>Nombre: {{ name | title }}</h2>
-{% elif name == "Fernando" %}
-    <h1>Hola Fernando</h1>
-{% else %}
-    <h1>Hola invitado</h1>
-{% endif %}
+{% block title %}
+    Landing Page
+{% endblock %}
 
+{% block content %}
 
-    <p>Edad: {{ age }}</p>
+    {% if name == "Ricardo" %}
+        <h1>¡Hola Profe!</h1>
+        <h2>Nombre: {{ name | title }}</h2>
+    {% elif name == "Fernando" %}
+        <h1>¡Hola Fernando!</h1>
+    {% else %}
+        <h1>¡Hola Invitado!</h1>
+    {% endif %}
 
-    <p>Fecha: {{ today | date:"d/m/y"}}</p>
+        <p>Edad: {{age}}</p>
 
-    <p> Tecnologías que estoy aprendiendo: </p>
+        <p>Fecha: {{today | date:"d/m/y"}}</p>
+
+        <p>Stack de tecnologías: </p>
     <ul>
         {% for tool in stack %}
-        <li>{{tool}}</li>
+            <li><a href="{% url 'stack_detail' tool.id %}">{{tool.name}}</a></li>
         {% empty %}
-        <li>No hay tecnologias Disponibles</li>
+            <li>No hay tecnologias disponibles</li>
         {% endfor %}
     </ul>
-    
-    
-</body>
-</html>
+
+{% endblock content %}
+

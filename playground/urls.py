@@ -24,3 +24,5 @@ urlpatterns = [
     path('prhases/', include("quotes.urls")),
     path('landings/', include("landing.urls"))
 ]
+
+
